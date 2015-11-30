@@ -1,25 +1,35 @@
-/*You’d like to store Snake objects in a list, most venomous first. 
-Please modify Snake so that you can use Collection.sort on a LinkedList of Snake objects. 
-You should be able to add Snakes to the list in any order,
-but the list will sort them in the desired order.
-Write a program to test your code. Here’s some snake data to test with:
-Rattlesnake, venom = 4
-Sea Snake, venom = 9
-Green Mamba, venom = 9
-Cobra, venom = 5
-Boa Constrictor, venom = 0
-Problem 2a: What if there is a tie between snakes with equal venom? 
-Please modify your program to sort snakes with equal venom 
-in alphabetical order, so Green Mamba is ahead of Sea Snake.*/
-
 package com.gaby;
 
-class Snake {
-String species;
-double venomRating;
-public Snake(String s, double v){
-this.species = s;
-this.venomRating = v;
-}
-}
+/* package whatever; // don't place package name! */
 
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Snake {
+
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		
+		LinkedList<Snake> snakeList = new LinkedList<Snake>();
+		Snake rattler = Snake.addSnake("Rattlesnake", 4.0);
+		snakeList.push(rattler);
+		Snake seaSnake = Snake.addSnake("Sea Snake", 9.0);
+		snakeList.push(seaSnake);
+		Snake greenMamba = Snake.addSnake("Green Mamba", 9.0);
+		snakeList.push(greenMamba);
+		Snake cobra = Snake.addSnake("Cobra", 5.0);
+		snakeList.push(cobra);
+		Snake boa = Snake.addSnake("Boa Constrictor", 0.0);
+		snakeList.push(boa);
+		
+		TheComparator comp = new TheComparator();
+		Collections.sort(snakeList, comp);
+		
+		for(Snake s : snakeList)
+		    {
+		    	System.out.println(s);
+		    }
+	}
